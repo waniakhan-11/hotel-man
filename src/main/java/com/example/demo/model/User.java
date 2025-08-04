@@ -19,23 +19,23 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "user_id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "user_id")
+	private Long id;
 
-    @Column(unique = true)
-    private String username;
+	@Column(unique = true)
+	private String username;
 
-    private String password;
+	private String password;
 
-    @Enumerated(EnumType.STRING)
-    private UserType role; 
+	@Enumerated(EnumType.STRING)
+	private UserType role;
 
-    private Double balance;
+	private Double balance;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Booking> bookings;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Booking> bookings;
 
 	public Long getId() {
 		return id;

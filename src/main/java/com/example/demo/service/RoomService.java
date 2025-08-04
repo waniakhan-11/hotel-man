@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,26 +15,19 @@ import com.example.demo.repository.UserRepository;
 @Service
 public class RoomService {
 
-    private final UserRepository userRepository;
-
+	private final UserRepository userRepository;
 
 	@Autowired
 	RoomRepository roomRepository;
 
-    RoomService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+	RoomService(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
 	public List<RoomDTO> getAvailableRooms() {
 		List<Room> roomList = roomRepository.findByAvailableTrue();
 		return roomList.stream().map(RoomMapper::toDTO).collect(Collectors.toList());
 	}
-	
-	
-
-//	public List<Room> getAvailableRoomsByDates(LocalDate checkInDate, LocalDate checkOutdDate) {
-//	    return roomRepository.findAvailableRoomsByDates(checkInDate, checkOutdDate);
-//	}
 
 	public RoomDTO addRoom(RoomDTO room) {
 		Room roomentity = roomRepository.save(RoomMapper.toEntity(room));

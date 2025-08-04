@@ -88,5 +88,4 @@ public class RoomDTO {
 				+ description + ", available=" + available + "]";
 	}
 
-	
 }

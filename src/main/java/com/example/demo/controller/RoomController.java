@@ -18,8 +18,11 @@ import com.example.demo.dto.RoomDTO;
 import com.example.demo.service.RoomService;
 import com.example.demo.util.NullFieldChecker;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/admin/rooms")
+@Tag(name = "Room Controller")
 public class RoomController {
 
 	@Autowired
@@ -46,21 +49,17 @@ public class RoomController {
 	@PutMapping("/{id}")
 	@ResponseBody
 	public RoomDTO updateRoom(@PathVariable("id") Long id, @RequestBody RoomDTO roomDetails) {
-//        logger.info("Inside put controller");
 		RoomDTO roomDb = roomService.findById(id);
-		System.out.println(roomDb + "--------before-----------" + roomDetails);
 		NullFieldChecker.copyNonNullFields(roomDetails, roomDb, "roomId");
-		System.out.println(roomDb+"----------after---------"+roomDetails);
 		return roomService.updateRoom(roomDb);
 	}
 
-	@PatchMapping("/{id}")
-	@ResponseBody
-	public RoomDTO updateRoomAttribut(@PathVariable("id") Long id, @RequestBody RoomDTO roomDetails) {
-		System.out.println("---------room patch---"+roomDetails);
-		RoomDTO roomDb = roomService.findById(id);
-		return roomService.updateRoom(roomDb);
-	}
+//	@PatchMapping("/{id}")
+//	@ResponseBody
+//	public RoomDTO updateRoomAttribut(@PathVariable("id") Long id, @RequestBody RoomDTO roomDetails) {
+//		RoomDTO roomDb = roomService.findById(id);
+//		return roomService.updateRoom(roomDb);
+//	}
 
 	@DeleteMapping("/{id}")
 	public void deleteRoom(@PathVariable("id") Long id) {

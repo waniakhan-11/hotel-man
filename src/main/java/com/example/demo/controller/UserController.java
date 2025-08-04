@@ -12,8 +12,11 @@ import com.example.demo.dto.UserDTO;
 import com.example.demo.dto.UserRegistrationDTO;
 import com.example.demo.service.UserService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/public/users") // public endpoint. /register will work with auth, but /me needs auth
+@Tag(name = "User Controller")
 public class UserController {
 
 	@Autowired

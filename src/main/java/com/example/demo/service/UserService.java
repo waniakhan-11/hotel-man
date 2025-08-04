@@ -14,14 +14,14 @@ import com.example.demo.repository.UserRepository;
 @Service
 public class UserService {
 
-    private final DaoAuthenticationProvider authenticationProvider;
+	private final DaoAuthenticationProvider authenticationProvider;
 
 	@Autowired
 	UserRepository userRepository;
 
-    UserService(DaoAuthenticationProvider authenticationProvider) {
-        this.authenticationProvider = authenticationProvider;
-    }
+	UserService(DaoAuthenticationProvider authenticationProvider) {
+		this.authenticationProvider = authenticationProvider;
+	}
 
 	public UserDTO findByUsername(String username) {
 		User user = userRepository.findByUsername(username);
@@ -32,7 +32,6 @@ public class UserService {
 	}
 
 	public UserRegistrationDTO saveUser(UserRegistrationDTO user) {
-//		User user = 
 		return UserRegistrationMapper.toDTO(userRepository.save(userRegistrationDTOToUser(user)));
 	}
 
@@ -45,7 +44,7 @@ public class UserService {
 			throw new IllegalArgumentException("Insufficient account balance.");
 		}
 	}
-	
+
 	private User userRegistrationDTOToUser(UserRegistrationDTO userDto) {
 		User user = new User();
 		user.setId(userDto.getId());
@@ -54,7 +53,6 @@ public class UserService {
 		user.setRole(userDto.getRole());
 		user.setBalance(userDto.getBalance());
 
-		
 		return user;
 	}
 }

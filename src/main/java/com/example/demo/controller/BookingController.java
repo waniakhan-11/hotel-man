@@ -17,8 +17,11 @@ import com.example.demo.dto.UserDTO;
 import com.example.demo.service.BookingService;
 import com.example.demo.service.UserService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("api/public/bookings")
+@Tag(name = "Booking Controller")
 public class BookingController {
 
 	@Autowired

@@ -14,7 +14,7 @@ public class BookingMapper {
 	}
 
 	public static Booking toEntity(BookingDTO dto, User user, Room room) {
-		Booking booking = new Booking(); // using no-args constructor
+		Booking booking = new Booking();
 		booking.setId(dto.getId());
 		booking.setUser(user);
 		booking.setRoom(room);

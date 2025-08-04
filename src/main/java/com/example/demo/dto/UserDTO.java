@@ -44,6 +44,5 @@ public class UserDTO {
 	public String toString() {
 		return "UserDTO [id=" + id + ", username=" + username + ", role=" + role + "]";
 	}
-	
-	
+
 }
